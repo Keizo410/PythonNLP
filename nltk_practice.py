@@ -1,4 +1,5 @@
 #set up nltk tools and examples to practice
+from __future__ import division
 import nltk
 nltk.download('all')
 
@@ -6,7 +7,6 @@ nltk.download('all')
 from nltk.book import *
 import matplotlib.pyplot as plt
 import numpy as np
-from __future__ import division
 
 # Search key words
 text1.concordance("monstrous")
@@ -50,3 +50,20 @@ def lexical_diversity(text):
 def percentage(count, total):
     return 100 * count / total
 
+#Frequency distribution
+fdist1 = FreqDist(text1)
+print(fdist1)
+fdist1.most_common(50)
+
+fdist1['whale']
+
+#Selection of words with properties
+V = set(text1)
+long_words = [w for w in V if len(w) > 15]
+sorted(long_words)
+print(long_words) # this list includes unique words in the text, which occurs only once
+
+sorted(w for w in V if len(w) > 7 and fdist1[w] >7) #gives more strict property
+
+#Collocation and Bigrams
+text1.collocations()

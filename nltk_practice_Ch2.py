@@ -30,3 +30,13 @@ cfd = nltk.ConditionalFreqDist((genre,word) for genre in brown.categories() for 
 genres = ['news','religion','hobbies','science_fiction','romance','humor']
 modals = ['can','could','may','might','must','will']
 cfd.tabulate(conditions=genres,samples=modals)
+
+#American pronunciation dictionary
+entries = nltk.corpus.cmudict.entries()
+
+syllable = ['N','IH0','K','S']
+[word for word, pron in entries if pron[-4:] == syllable]
+
+
+
+
